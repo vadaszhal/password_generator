@@ -1,7 +1,11 @@
+# required modules
 import string
 import random
 
+# possible characters
 characters = list(string.ascii_letters + string.digits + "&#@!+")
+
+# function with while loop and error handling
 def generate_password():
     while True:
         try:
@@ -16,6 +20,7 @@ def generate_password():
             print("Password length must be between 8 and 12 characters. Please try again.")
     random.shuffle(characters)
 
+# generate password with for loop
     password = []
 
     for x in range(password_length):
@@ -25,15 +30,19 @@ def generate_password():
 
     password = ''.join(password)
     print(password)
+# main function to handle user input
+def main():
+    while True:
+        option = input("Do you want to generate a password? (y/n): ").strip().lower()
 
-option = input("Do you want to generate a password? (y/n): ").strip().lower()
-
-if option == 'y':
-    generate_password()
-    quit()
-elif option == 'n':
-    print("Password generation cancelled.")
-    quit()
-else:
-    print("Invalid option. Please enter 'y' or 'n'.")
-    quit()
+        if option == 'y':
+            generate_password()
+            break
+        elif option == 'n':
+            print("Password generation cancelled.")
+            break
+        else:
+            print("Invalid option. Please enter 'y' or 'n'.")
+    
+if __name__ == "__main__":
+    main()
